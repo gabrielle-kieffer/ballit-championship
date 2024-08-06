@@ -68,7 +68,7 @@ function App() {
       {teams.length >= 8 && teams.length % 2 === 0 && !championshipStarted && (
         <button onClick={startChampionship}>Iniciar Campeonato</button>
       )}
-      {/* {championshipStarted && (
+      {championshipStarted && (
         <div>
           <h2>Partidas</h2>
           <ul>
@@ -79,7 +79,7 @@ function App() {
             ))}
           </ul>
         </div>
-      )} */}
+      )}
       {selectedMatch && (
         <Match match={selectedMatch} onClose={handleCloseMatch} />
       )}
