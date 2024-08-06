@@ -58,6 +58,15 @@ function App() {
     setSelectedMatch(null);
   };
 
+  const finalizeMatch = (winner) => {
+    setTeams(prevTeams => 
+      prevTeams.map(team => ({
+        ...team,
+        points: team.name === winner ? (team.points || 0) + 1 : team.points || 0
+      }))
+    );
+
+  };
 
   return (
     <div className="App">
@@ -81,10 +90,11 @@ function App() {
         </div>
       )}
       {selectedMatch && (
-        <Match match={selectedMatch} onClose={handleCloseMatch} />
+        <Match match={selectedMatch} onClose={handleCloseMatch} onResult={finalizeMatch} />
       )}
     </div>
   );
 }
+
 
 export default App;
