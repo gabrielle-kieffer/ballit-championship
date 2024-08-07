@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const Match = ({ match, onClose, onResult }) => {
   const [team1Points, setTeam1Points] = useState(50);
   const [team2Points, setTeam2Points] = useState(50);
+  const [message, setMessage] = useState("");
 
   const handleBlot = (team) => {
     if (team === 'team1') {
@@ -10,14 +11,16 @@ const Match = ({ match, onClose, onResult }) => {
     } else {
       setTeam2Points(prev => prev + 5);
     }
+    setMessage(""); 
   };
 
   const handlePlif = (team) => {
     if (team === 'team1') {
-      setTeam2Points(prev => prev + 1); // Plif para o time adversário
+      setTeam2Points(prev => prev + 1); 
     } else {
-      setTeam1Points(prev => prev + 1); // Plif para o time adversário
+      setTeam1Points(prev => prev + 1); 
     }
+    setMessage("");
   };
 
   const handleAdvrungh = (team) => {
@@ -26,6 +29,7 @@ const Match = ({ match, onClose, onResult }) => {
     } else {
       setTeam2Points(prev => prev - 10);
     }
+    setMessage(""); 
   };
 
   const determineWinner = () => {
@@ -34,15 +38,18 @@ const Match = ({ match, onClose, onResult }) => {
     } else if (team2Points > team1Points) {
       return match.team2.name;
     } else {
-      // Empate, aplicar o "grusht"
-      return 'Empate - Grusht necessário';
+      return null;
     }
   };
 
   const handleCloseMatch = () => {
     const winner = determineWinner();
-    onResult(winner); 
-    onClose(); 
+    if (winner) {
+      onResult(winner); 
+      onClose(); 
+    } else {
+      setMessage("Para encerrar a partida, é necessário desempatar!");
+    }
   };
 
   return (
@@ -65,12 +72,12 @@ const Match = ({ match, onClose, onResult }) => {
       <button onClick={() => handleAdvrungh('team1')}>Registrar Advrungh para {match.team1.name}</button>
       <button onClick={() => handleAdvrungh('team2')}>Registrar Advrungh para {match.team2.name}</button>
 
-      <button onClick={handleCloseMatch}>Encerrar Partida</button>
+      <button onClick={handleCloseMatch} disabled={team1Points === team2Points}>Encerrar Partida</button>
+      {message && <p className="error-message">{message}</p>}
       <button onClick={onClose}>Fechar</button>
     </div>
   );
 };
 
 export default Match;
-
 

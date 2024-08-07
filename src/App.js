@@ -1,53 +1,42 @@
-// import React, { useState } from 'react';
-// import TeamForm from './TeamForm';
-// import TeamList from './TeamList';
+//ultimo teste
 
-// import Match from './Match';
-// import './App.css';
+import React, { useState } from 'react';
+import TeamForm from './TeamForm'; 
+import TeamList from './TeamList'; 
+import Match from './Match'; 
+import TeamRanking from './TeamRanking'; 
+import './App.css';
+
+const generateMatches = (shuffledTeams) => {
+  const generatedMatches = [];
+  for (let i = 0; i < shuffledTeams.length; i += 2) {
+    generatedMatches.push({
+      team1: shuffledTeams[i],
+      team2: shuffledTeams[i + 1],
+      administered: false,
+    });
+  }
+  return generatedMatches;
+};
 
 // function App() {
 //   const [teams, setTeams] = useState([]);
+//   const [matches, setMatches] = useState([]);
 //   const [championshipStarted, setChampionshipStarted] = useState(false);
-//   const [currentTeams, setCurrentTeams] = useState([]);
-//   const [matches, setMatches] = useState([]); 
-//   const [selectedMatch, setSelectedMatch] = useState(null); 
+//   const [selectedMatch, setSelectedMatch] = useState(null);
+//   const [topTeam, setTopTeam] = useState(null);
+//   const [showRanking, setShowRanking] = useState(false);
+//   const [matchScores, setMatchScores] = useState([]);
 
-
-//   const addTeam = (newTeam) => {
-//     const { name, slogan } = newTeam;
-//     if (teams.some(team => team.name === name)) {
-//       alert('O nome do time deve ser único.');
-//       return;
-//     }
-
-//     if (teams.some(team => team.slogan === slogan)) {
-//       alert('O grito de guerra deve ser único.');
-//       return;
-//     }
-
-//     setTeams((prevTeams) => [...prevTeams, newTeam]);
+//   const addTeam = (team) => {
+//     setTeams([...teams, team]);
 //   };
 
 //   const startChampionship = () => {
-//     if (teams.length < 8 || teams.length % 2 !== 0) {
-//       alert('Número de times deve ser par e no mínimo 8.');
-//       return;
-//     }
-
 //     const shuffledTeams = [...teams].sort(() => Math.random() - 0.5);
-//     setCurrentTeams(shuffledTeams);
-//     setChampionshipStarted(true);
-
-//     // Gerar as partidas
-//     const generatedMatches = [];
-//     for (let i = 0; i < shuffledTeams.length; i += 2) {
-//       generatedMatches.push({
-//         team1: shuffledTeams[i],
-//         team2: shuffledTeams[i + 1],
-//         administered: false,
-//       });
-//     }
+//     const generatedMatches = generateMatches(shuffledTeams);
 //     setMatches(generatedMatches);
+//     setChampionshipStarted(true);
 //   };
 
 //   const handleMatchClick = (match) => {
@@ -59,24 +48,61 @@
 //   };
 
 //   const finalizeMatch = (winner) => {
-//     setTeams(prevTeams => 
-//       prevTeams.map(team => ({
+//     setTeams(prevTeams => {
+//       const updatedTeams = prevTeams.map(team => ({
 //         ...team,
-//         points: team.name === winner ? (team.points || 0) + 1 : team.points || 0
-//       }))
-      
-//     );
-//     console.log(winner);
+//         points: team.name === winner ? (team.points || 0) + 1 : (team.points || 0)
+//       }));
 
+//       const updatedMatchScores = [...matchScores, {
+//         match: selectedMatch,
+//         winner
+//       }];
+//       setMatchScores(updatedMatchScores);
+
+//       const highestPoints = Math.max(...updatedTeams.map(team => team.points || 0));
+//       const topScoringTeams = updatedTeams.filter(team => team.points === highestPoints);
+
+//       if (topScoringTeams.length > 1) {
+//         setTopTeam(null);
+//       } else {
+//         setTopTeam(topScoringTeams[0]);
+//       }
+
+//       const updatedMatches = matches.map(match =>
+//         match === selectedMatch ? { ...match, administered: true } : match
+//       );
+
+//       setMatches(updatedMatches);
+
+//       // Verificar se todas as partidas foram administradas
+//       const allMatchesAdministered = updatedMatches.every(match => match.administered);
+//       if (allMatchesAdministered) {
+//         setShowRanking(true);
+//         setChampionshipStarted(false);
+//       }
+
+//       return updatedTeams;
+//     });
+//   };
+
+//   const clearTeams = () => {
+//     setTeams([]);
+//     setMatches([]);
+//     setTopTeam(null);
+//     setMatchScores([]);
+//     setShowRanking(false);
+//     setChampionshipStarted(false);
 //   };
 
 //   return (
 //     <div className="App">
 //       <h1>Ballit Championship</h1>
 //       <h2>Cadastre os Times</h2>
-//       <TeamForm addTeam={addTeam} />
+//       {/* <TeamForm addTeam={addTeam} /> */}
+//       <TeamForm addTeam={addTeam} championshipStarted={championshipStarted} />
 //       <TeamList teams={teams} />
-//       {teams.length >= 8 && teams.length % 2 === 0 && !championshipStarted && (
+//       {!showRanking && teams.length >= 4 && teams.length % 2 === 0 && !championshipStarted && (
 //         <button onClick={startChampionship}>Iniciar Campeonato</button>
 //       )}
 //       {championshipStarted && (
@@ -92,64 +118,39 @@
 //         </div>
 //       )}
 //       {selectedMatch && (
-//         <Match match={selectedMatch}  onClose={handleCloseMatch}  onResult={finalizeMatch} />
+//         <Match match={selectedMatch} onClose={handleCloseMatch} onResult={finalizeMatch} />
+//       )}
+//       {topTeam && !showRanking && (
+//         <div>
+//           <h2>Vencedor da partida</h2>
+//           <p>{topTeam.name} - {topTeam.points} pontos</p>
+//         </div>
+//       )}
+//       {showRanking && (
+//         <TeamRanking teams={teams} matches={matches} onClearTeams={clearTeams} />
 //       )}
 //     </div>
 //   );
 // }
 
-
-// export default App;
-
-import React, { useState } from 'react';
-import TeamForm from './TeamForm';
-import TeamList from './TeamList';
-import Match from './Match';
-import './App.css';
-
 function App() {
   const [teams, setTeams] = useState([]);
+  const [matches, setMatches] = useState([]);
   const [championshipStarted, setChampionshipStarted] = useState(false);
-  const [currentTeams, setCurrentTeams] = useState([]);
-  const [matches, setMatches] = useState([]); 
-  const [selectedMatch, setSelectedMatch] = useState(null); 
-  const [topTeam, setTopTeam] = useState(null); // Adicionado para armazenar o time com maior pontuação
+  const [selectedMatch, setSelectedMatch] = useState(null);
+  const [topTeam, setTopTeam] = useState(null);
+  const [showRanking, setShowRanking] = useState(false);
+  const [matchScores, setMatchScores] = useState([]);
 
-  const addTeam = (newTeam) => {
-    const { name, slogan } = newTeam;
-    if (teams.some(team => team.name === name)) {
-      alert('O nome do time deve ser único.');
-      return;
-    }
-
-    if (teams.some(team => team.slogan === slogan)) {
-      alert('O grito de guerra deve ser único.');
-      return;
-    }
-
-    setTeams((prevTeams) => [...prevTeams, newTeam]);
+  const addTeam = (team) => {
+    setTeams([...teams, team]);
   };
 
   const startChampionship = () => {
-    if (teams.length < 8 || teams.length % 2 !== 0) {
-      alert('Número de times deve ser par e no mínimo 8.');
-      return;
-    }
-
     const shuffledTeams = [...teams].sort(() => Math.random() - 0.5);
-    setCurrentTeams(shuffledTeams);
-    setChampionshipStarted(true);
-
-    // Gerar as partidas
-    const generatedMatches = [];
-    for (let i = 0; i < shuffledTeams.length; i += 2) {
-      generatedMatches.push({
-        team1: shuffledTeams[i],
-        team2: shuffledTeams[i + 1],
-        administered: false,
-      });
-    }
+    const generatedMatches = generateMatches(shuffledTeams);
     setMatches(generatedMatches);
+    setChampionshipStarted(true);
   };
 
   const handleMatchClick = (match) => {
@@ -164,29 +165,59 @@ function App() {
     setTeams(prevTeams => {
       const updatedTeams = prevTeams.map(team => ({
         ...team,
-        points: team.name === winner ? (team.points || 0) + 1 : team.points || 0
+        points: team.name === winner ? (team.points || 0) + 1 : (team.points || 0)
       }));
 
-      // Encontrar o time com maior pontuação
-      const topScoringTeam = updatedTeams.reduce((prevTop, current) => {
-        return (current.points > (prevTop.points || 0)) ? current : prevTop;
-      }, {});
+      const updatedMatchScores = [...matchScores, {
+        match: selectedMatch,
+        winner
+      }];
+      setMatchScores(updatedMatchScores);
 
-      setTopTeam(topScoringTeam);
+      const highestPoints = Math.max(...updatedTeams.map(team => team.points || 0));
+      const topScoringTeams = updatedTeams.filter(team => team.points === highestPoints);
+
+      if (topScoringTeams.length > 1) {
+        setTopTeam(null);
+      } else {
+        setTopTeam(topScoringTeams[0]);
+      }
+
+      const updatedMatches = matches.map(match =>
+        match === selectedMatch ? { ...match, administered: true } : match
+      );
+
+      setMatches(updatedMatches);
+
+      const allMatchesAdministered = updatedMatches.every(match => match.administered);
+      if (allMatchesAdministered) {
+        setShowRanking(true);
+        setChampionshipStarted(false);
+      }
+
       return updatedTeams;
     });
+  };
+
+  const clearTeams = () => {
+    setTeams([]);
+    setMatches([]);
+    setTopTeam(null);
+    setMatchScores([]);
+    setShowRanking(false);
+    setChampionshipStarted(false);
   };
 
   return (
     <div className="App">
       <h1>Ballit Championship</h1>
       <h2>Cadastre os Times</h2>
-      <TeamForm addTeam={addTeam} />
+      <TeamForm addTeam={addTeam} championshipStarted={championshipStarted} showRanking={showRanking} />
       <TeamList teams={teams} />
-      {teams.length >= 8 && teams.length % 2 === 0 && !championshipStarted && (
+      {!showRanking && teams.length >= 4 && teams.length % 2 === 0 && !championshipStarted && (
         <button onClick={startChampionship}>Iniciar Campeonato</button>
       )}
-      {championshipStarted && (
+      {championshipStarted && !showRanking && (
         <div>
           <h2>Partidas</h2>
           <ul>
@@ -201,15 +232,19 @@ function App() {
       {selectedMatch && (
         <Match match={selectedMatch} onClose={handleCloseMatch} onResult={finalizeMatch} />
       )}
-      {topTeam && (
+      {topTeam && !showRanking && (
         <div>
-          <h2>Time com Maior Pontuação</h2>
+          <h2>Vencedor da partida</h2>
           <p>{topTeam.name} - {topTeam.points} pontos</p>
         </div>
+      )}
+      {showRanking && (
+        <TeamRanking teams={teams} matches={matches} onClearTeams={clearTeams} />
       )}
     </div>
   );
 }
+
 
 export default App;
 

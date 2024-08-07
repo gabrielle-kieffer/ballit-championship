@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const TeamForm = ({ addTeam }) => {
+const TeamForm = ({ addTeam, championshipStarted, showRanking }) => {
   const [name, setName] = useState('');
   const [slogan, setSlogan] = useState('');
   const [year, setYear] = useState('');
@@ -42,7 +42,9 @@ const TeamForm = ({ addTeam }) => {
         onChange={(e) => setYear(e.target.value)}
         required
       />
-      <button type="submit">Adicionar Time</button>
+      {!(championshipStarted || showRanking) && (
+        <button type="submit">Adicionar Time</button>
+      )}
     </form>
   );
 };
