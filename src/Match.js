@@ -39,7 +39,7 @@ const Match = ({ match, onClose, onResult }) => {
     }
   };
 
-  const handleEndMatch = () => {
+  const handleCloseMatch = () => {
     const winner = determineWinner();
     onResult(winner); 
     onClose(); 
@@ -49,10 +49,10 @@ const Match = ({ match, onClose, onResult }) => {
     <div className="match-details">
       <h2>Detalhes da Partida</h2>
       <p>{match.team1.name} vs {match.team2.name}</p>
-      <p><strong>Grito de Guerra:</strong> {match.team1.slogan}</p>
-      <p><strong>Grito de Guerra:</strong> {match.team2.slogan}</p>
-      <p><strong>Ano de Fundação:</strong> {match.team1.year}</p>
-      <p><strong>Ano de Fundação:</strong> {match.team2.year}</p>
+      <p><strong>Grito de Guerra: {match.team1.slogan}</strong></p>
+      <p><strong>Grito de Guerra: {match.team2.slogan}</strong></p>
+      <p><strong>Ano de Fundação: {match.team1.year}</strong></p>
+      <p><strong>Ano de Fundação: {match.team2.year}</strong></p>
 
       <h3>Pontos</h3>
       <p>{match.team1.name}: {team1Points}</p>
@@ -65,7 +65,7 @@ const Match = ({ match, onClose, onResult }) => {
       <button onClick={() => handleAdvrungh('team1')}>Registrar Advrungh para {match.team1.name}</button>
       <button onClick={() => handleAdvrungh('team2')}>Registrar Advrungh para {match.team2.name}</button>
 
-      <button onClick={handleEndMatch}>Encerrar Partida</button>
+      <button onClick={handleCloseMatch}>Encerrar Partida</button>
       <button onClick={onClose}>Fechar</button>
     </div>
   );
