@@ -27,6 +27,7 @@ function App() {
   const [topTeam, setTopTeam] = useState(null);
   const [showRanking, setShowRanking] = useState(false);
   const [matchScores, setMatchScores] = useState([]);
+  
 
   const addTeam = (team) => {
     setTeams([...teams, team]);
@@ -130,7 +131,6 @@ function App() {
     </div>
   );
 }
-
 
 export default App;
 
