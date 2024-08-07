@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TeamForm from './TeamForm'; 
 import TeamList from './TeamList'; 
 import Match from './Match'; 
@@ -95,6 +95,11 @@ function App() {
     setShowFullRanking(true);
   };
 
+  // useEffect to log state change
+  useEffect(() => {
+    console.log('Show Full Ranking updated:', showFullRanking);
+  }, [showFullRanking]);
+
   return (
     <div className="App">
       <h1>Ballit Championship</h1>
@@ -119,20 +124,18 @@ function App() {
       {selectedMatch && (
         <Match match={selectedMatch} onClose={handleCloseMatch} onResult={finalizeMatch} />
       )}
-      {topTeam && !showFullRanking && (
+       {/* {topTeam &&  !showFullRanking &&( não da pra usar, pq não exibe o ranking*/ }
+      {topTeam && (
         <div>
           <h2>Vencedor do Campeonato</h2>
           <p>{topTeam.name}</p>
           <p>Grito de Guerra: {topTeam.slogan}</p>
           <button onClick={handleShowFullRanking}>Ver Ranking Completo</button>
         </div>
-      )}
-      {showFullRanking && (
+      )} 
         <TeamRanking teams={teams} matches={matches} onClearTeams={clearTeams} />
-      )}
-    </div>
+    </div>   
   );
 }
-
 export default App;
 
