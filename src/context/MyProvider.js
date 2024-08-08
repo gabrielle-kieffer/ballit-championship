@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MyContext from './MyContext';
 
 function Provider({ children }) {
-  const [teams, setTeams] = useState(0);
+  const [teams, setTeams] = useState([]);
 
   const values = useMemo(() => ({
     teams,
