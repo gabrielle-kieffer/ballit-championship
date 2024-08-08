@@ -37,7 +37,6 @@ body {
   max-width: 800px; 
   padding: 20px;
   border-radius: 8px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 form {
@@ -48,9 +47,19 @@ input {
   margin: 5px;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ddd; 
+  border: none; 
+  background-color:  #ccb1b1; 
   border-radius: 4px; 
 }
+
+input-placeholder{
+  font-size: 16px;
+}
+
+input:focus{
+  border: none; 
+}
+
 
 button {
   margin-top: 10px;
@@ -61,12 +70,14 @@ button {
   background-color: #952bb2;
   color: #000000; 
   cursor: pointer; 
-  transition: background-color 0.3s; 
+  transition: background-color 0.5s; 
 }
 
 button:hover {
   background-color: #b964d1; 
 }
+
+
 
 .buttonMainPage{
   display: flex;
