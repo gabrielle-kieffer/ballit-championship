@@ -4,13 +4,18 @@ import MyContext from './MyContext';
 
 function Provider({ children }) {
   const [teams, setTeams] = useState([]);
+  const [ranking, setRanking] = useState([]);
 
   const values = useMemo(() => ({
     teams,
     setTeams,
+    ranking,
+    setRanking,
   }), [
     teams,
     setTeams,
+    ranking,
+    setRanking,
   ]);
 
   return (

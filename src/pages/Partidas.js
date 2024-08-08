@@ -3,13 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import context from '../context/MyContext';
 
 function Partidas() {
-  const { teams } = useContext(context);
+  const navigate = useNavigate();
+  const { teams, setRanking } = useContext(context);
   const [matches, setMatches] = useState([]);
+  // const [teamsPartidas, setTeamsPartidas] = useState([]);
   const [currentMatchIndex, setCurrentMatchIndex] = useState(0);
 
   useEffect(() => {
     const matchesArr = generateMatches();
     setMatches(matchesArr);
+    // setTeamsPartidas(teams);
   }, [teams]);
   
 
@@ -34,10 +37,19 @@ function Partidas() {
       document.getElementById('nomeT2').innerHTML = match.team2.name;
       setCurrentMatchIndex(currentMatchIndex + 1);
     } else {
+      const partidasTeams = [...teams].sort((a, b) => b.points - a.points);
+      setRanking(partidasTeams);
+      // const metadeDoArray = partidasTeams.splice(0, partidasTeams.length / 2);
+      // setTeamsPartidas([]);
+      // setTeamsPartidas(metadeDoArray);
+      // console.log('Partidas', teamsPartidas);
+      navigate('/ranking');
       document.getElementById('gritoDeGuerraT1').innerHTML = '';
       document.getElementById('nomeT1').innerHTML = '';
       document.getElementById('gritoDeGuerraT2').innerHTML = '';
       document.getElementById('nomeT2').innerHTML = '';
+      document.getElementById('nomePontosT1').innerHTML = '';
+      document.getElementById('nomePontosT2').innerHTML = '';
       console.log('All matches have been displayed.');
     }
   };
@@ -56,6 +68,10 @@ function Partidas() {
     document.getElementById('nomePontosT1').innerHTML = `${matches[currentMatchIndex - 1].team1.name}: ${matches[currentMatchIndex - 1].team1.points}`;
     document.getElementById('nomePontosT2').innerHTML = `${matches[currentMatchIndex - 1].team2.name}: ${matches[currentMatchIndex - 1].team2.points}`;
   };
+
+  // const finalizarJogo = () => {
+  //   navigate('/ranking');
+  // };
 
   return (
     <div>
@@ -81,6 +97,13 @@ function Partidas() {
         >
           Iniciar Jogo
       </button>
+      {/* <button
+          type="button"
+          disabled={ matches.length !== 1 }
+          onClick={ finalizarJogo }
+        >
+          Finalizar Jogo
+      </button> */}
 
       <p id='gritoDeGuerraT1'></p>
       <p id='nomeT1'></p>
@@ -130,7 +153,7 @@ function Partidas() {
           Advrungh
       </button>
 
-     <div className='points'>
+    <div className='points'>
       <p id='nomePontosT1'></p>
       <p id='nomePontosT2'></p>
       </div>

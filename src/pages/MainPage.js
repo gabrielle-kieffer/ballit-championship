@@ -8,7 +8,7 @@ function MainPage() {
   const [name, setName] = useState('');
   const [slogan, setSlogan] = useState('');
   const [year, setYear] = useState('');
-  const [points, setPoints] = useState(50);
+  const [points] = useState(50);
 
   useEffect(() => {
     const ulTimesCadastrados = document.getElementById('ulTimesCadastrados');
