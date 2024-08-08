@@ -1,10 +1,43 @@
+header{
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.registrationTitle{
+  font-size: 18px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.infoTeam{
+  margin-top: 20px;
+  display: flex;
+  flex-flow: row nowrap;
+
+}
+
+div label{
+  margin-top: 6px;
+}
+
 body {
   padding: 0;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #cbc4c4; 
 }
 
-/* .App {
+.App {
   text-align: center;
+  width: 100%;
+  max-width: 800px; 
+  padding: 20px;
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 form {
@@ -15,263 +48,67 @@ input {
   margin: 5px;
   padding: 10px;
   font-size: 16px;
+  border: 1px solid #ddd; 
+  border-radius: 4px; 
 }
 
 button {
   margin-top: 10px;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 17px;
+  border: none; 
+  border-radius: 6px; 
+  background-color: #952bb2;
+  color: #000000; 
+  cursor: pointer; 
+  transition: background-color 0.3s; 
 }
 
-h2 {
-  margin-top: 20px;
-} */
-
-.center {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  /* background-image: url('./img/pxfuel\ \(2\).jpg'); */
-  background-size: cover;
+button:hover {
+  background-color: #b964d1; 
 }
 
-.login, .linkLogin {
-  font-size: 36px;
-  color: #007bff;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-}
-
-.inputLogin {
-  width: 50%;
-  margin: 1%;
-  padding: 10px 15px;
-  font-size: 16px;
-  color: #333;
-  border: 1px solid #007bff;
-  border-radius: 5px;
-}
-
-.buttonLogin:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-  box-shadow: none;
-}
-
-.buttonLogin {
-  text-transform: uppercase;
-  margin-top: 5%;
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 7px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.buttonLogin:hover {
-  background-color: #0056b3;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
-}
-
-.linkLogin {
-  margin-top: 5%;
-  font-size: 15px;
-  text-decoration: none;
-}
-
-/* pagina notfound */
-
-.notFoundContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #151B29;
-  font-family: Arial, sans-serif;
-  color: #333;
-}
-
-.notFoundTitle {
-  color: #007bff;
-  font-size: 200%;
-  font-weight: bold;
-  margin-bottom: 0%;
-}
-
-.notFoundText {
-  font-size: 250%;
-}
-
-.backToHomeLink {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.backToHomeLink:hover {
-  text-decoration: underline;
-}
-
-.background {
-  min-height: 100vh;
-  background-color: #151B29;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
-}
-
-/* main */
-
-.title {
-  padding: 5%;
-  margin: 0;
+.buttonMainPage{
   display: flex;
   justify-content: center;
-  align-items: center;
-  background-color: #341baf;
+
 }
 
-/* footer */
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 95%;
-  background-color: #341baf;
-  color: #fff;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 3%;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 80);
+.buttonInitial{
+  margin-left: 50px;
 }
 
-.icon {
-  font-size: 200%;
-  color: #000;
+h3{
+  font-size: 24px;
 }
 
-.img {
-  width: 50%;
-  height: 50%;
-  border-radius: 100%;
+ul{
+  font-size: 20px;
 }
 
-.imgLocate {
-  padding-top: 10%;
-  text-align: center;
-}
-
-.nameProfile {
-  text-align: center;
-  font-size: 200%;
-  color: #341baf;
-}
-
-.centerBottom {
+.titleMatches{
   display: flex;
   justify-content: center;
 }
 
-.logout {
-  background-color: #ff0000;
-  color: #ffffff;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  bottom: 20px;
-  margin-top: 10%;
-}
-
-.imgSize {
-  margin: 10%;
-  width: 60%;
-  height: 60%;
-  border: 2px solid #000000;
-}
-
-.armasContainer {
-  margin: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  padding-bottom: 17%;
-}
-
-.armas {
-  background-color: #341baf;
-  border: 3px dashed #000000;
-  margin: 2%;
-  max-width: 27%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.operacao {
-  margin: 0;
-}
-
-.operacaoBotao {
-  padding-left: 10px;
-  padding-right: 10px;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.nomeArma {
-  text-align: center;
-}
-
-.mainMoney {
-  display: flex;
-}
-
-.iconMoney {
-  font-size: 200%;
-  padding: 3%;
-}
-
-.numMoney {
-  color: #daa520;
-}
-
-.payButton {
-  background-color: #007bff;
-  color: #ffffff;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  bottom: 20px;
-  margin-bottom: 4%;
-}
-
-.containerCenter {
+.match{
   display: flex;
   justify-content: center;
-  margin-bottom: 4%;
 }
 
-.profileMoney {
+.rivals{
   display: flex;
-  margin-bottom: 3%;
   justify-content: center;
-  margin-right: 20%;
 }
 
-.money {
-  color: #daa520;
-  margin-left: 10%;
+.points{
+  display: flex;
+  justify-content: center;
+
 }
+
+
+
+
+
 

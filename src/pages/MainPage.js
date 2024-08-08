@@ -21,11 +21,28 @@ function MainPage() {
   });
 
   const handleClick = () => {
+    const isNameUnique = !teams.some((team) => team.name === name);
+    const isSloganUnique = !teams.some((team) => team.slogan === slogan);
+  
+    if (!isNameUnique) {
+      alert('Já existe um time com esse nome!');
+      return;
+    }
+  
+    if (!isSloganUnique) {
+      alert('Já existe um time com esse grito de guerra!');
+      return;
+    }
     const ulTimesCadastrados = document.getElementById('ulTimesCadastrados');
     const li = document.createElement('li');
     li.innerText = `${name} - ${slogan} - ${year}`;
     ulTimesCadastrados.appendChild(li);
     setTeams([...teams, { name, slogan, year, points }]);
+
+    // Limpa os inputs após adicionar a lista 
+    setName('');
+    setSlogan('');
+    setYear('');
   }
 
   const irParaPartidas = () => {
@@ -34,12 +51,16 @@ function MainPage() {
 
   
   const verify = name && slogan && year;
-  const quantidadeTimes = teams.length > 7;
+  const quantidadeTimes = teams.length > 3;
   return (
     <div>
+      <header>
         <h1>Ballit Championship</h1>
+        </header>
+        <div className='registrationTitle'>
         <h2>Cadastre os Times</h2>
-
+        </div>
+        <div className='infoTeam'>
         <label htmlFor='teamName'>Nome do Time: </label>
         <input
           type="text"
@@ -69,7 +90,9 @@ function MainPage() {
           onChange={(e) => setYear(e.target.value)}
           required
         />
+         </div>
         <br />
+        <div className='buttonMainPage'>
         <button
           type="button"
           disabled={ !verify }
@@ -78,6 +101,7 @@ function MainPage() {
           Adicionar Time
         </button>
         <br />
+        <div className='buttonInitial'>
         <button
           type="button"
           disabled={ !quantidadeTimes }
@@ -85,13 +109,14 @@ function MainPage() {
         >
           Iniciar Partida
         </button>
-
-        <h2>Times Cadastrados</h2>
-
+        </div>
+        </div>
+        <h3>Times Cadastrados</h3>
         <ul id='ulTimesCadastrados'>
         </ul>
     </div>
   )
 }
+
 
 export default MainPage;

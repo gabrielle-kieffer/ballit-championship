@@ -1,4 +1,4 @@
-const TeamRanking = ({ teams, matches, onClearTeams }) => {
+const Ranking = ({ teams, matches, onClearTeams }) => {
   // Função para verificar se uma equipe participou de pelo menos uma partida
   const didAllTeamsParticipate = (teams, matches) => {
     const teamNames = new Set(teams.map(team => team.name));
@@ -87,4 +87,4 @@ const TeamRanking = ({ teams, matches, onClearTeams }) => {
 };
 
   
-export default TeamRanking;
+export default Ranking;

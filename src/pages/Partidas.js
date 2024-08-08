@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import context from '../context/MyContext';
 
 function Partidas() {
@@ -11,6 +11,7 @@ function Partidas() {
     const matchesArr = generateMatches();
     setMatches(matchesArr);
   }, [teams]);
+  
 
   const generateMatches = () => {
     const generatedMatches = [];
@@ -59,14 +60,20 @@ function Partidas() {
   return (
     <div>
       <h1>Ballit Championship</h1>
+      <div className='titleMatches'>
       <h2>Partidas</h2>
+      </div>
+      <div className='match'>
       <ul id="ulPartidas">
         {matches.map((match, index) => (
           <li key={index}>
+            <div className='rivals'>
             {match.team1.name} x {match.team2.name}
+            </div>
           </li>
         ))}
       </ul>
+      </div>
 
       <button
           type="button"
@@ -123,10 +130,13 @@ function Partidas() {
           Advrungh
       </button>
 
+     <div className='points'>
       <p id='nomePontosT1'></p>
       <p id='nomePontosT2'></p>
+      </div>
     </div>
   )
 }
+
 
 export default Partidas
