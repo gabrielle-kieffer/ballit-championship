@@ -1,4 +1,9 @@
-.App {
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/* .App {
   text-align: center;
 }
 
@@ -20,5 +25,253 @@ button {
 
 h2 {
   margin-top: 20px;
+} */
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* background-image: url('./img/pxfuel\ \(2\).jpg'); */
+  background-size: cover;
+}
+
+.login, .linkLogin {
+  font-size: 36px;
+  color: #007bff;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.inputLogin {
+  width: 50%;
+  margin: 1%;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #333;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+}
+
+.buttonLogin:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.buttonLogin {
+  text-transform: uppercase;
+  margin-top: 5%;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.buttonLogin:hover {
+  background-color: #0056b3;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.linkLogin {
+  margin-top: 5%;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+/* pagina notfound */
+
+.notFoundContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #151B29;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.notFoundTitle {
+  color: #007bff;
+  font-size: 200%;
+  font-weight: bold;
+  margin-bottom: 0%;
+}
+
+.notFoundText {
+  font-size: 250%;
+}
+
+.backToHomeLink {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.backToHomeLink:hover {
+  text-decoration: underline;
+}
+
+.background {
+  min-height: 100vh;
+  background-color: #151B29;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* main */
+
+.title {
+  padding: 5%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #341baf;
+}
+
+/* footer */
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 95%;
+  background-color: #341baf;
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 3%;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 80);
+}
+
+.icon {
+  font-size: 200%;
+  color: #000;
+}
+
+.img {
+  width: 50%;
+  height: 50%;
+  border-radius: 100%;
+}
+
+.imgLocate {
+  padding-top: 10%;
+  text-align: center;
+}
+
+.nameProfile {
+  text-align: center;
+  font-size: 200%;
+  color: #341baf;
+}
+
+.centerBottom {
+  display: flex;
+  justify-content: center;
+}
+
+.logout {
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  bottom: 20px;
+  margin-top: 10%;
+}
+
+.imgSize {
+  margin: 10%;
+  width: 60%;
+  height: 60%;
+  border: 2px solid #000000;
+}
+
+.armasContainer {
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 17%;
+}
+
+.armas {
+  background-color: #341baf;
+  border: 3px dashed #000000;
+  margin: 2%;
+  max-width: 27%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.operacao {
+  margin: 0;
+}
+
+.operacaoBotao {
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.nomeArma {
+  text-align: center;
+}
+
+.mainMoney {
+  display: flex;
+}
+
+.iconMoney {
+  font-size: 200%;
+  padding: 3%;
+}
+
+.numMoney {
+  color: #daa520;
+}
+
+.payButton {
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  bottom: 20px;
+  margin-bottom: 4%;
+}
+
+.containerCenter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4%;
+}
+
+.profileMoney {
+  display: flex;
+  margin-bottom: 3%;
+  justify-content: center;
+  margin-right: 20%;
+}
+
+.money {
+  color: #daa520;
+  margin-left: 10%;
 }
 
