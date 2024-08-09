@@ -33,6 +33,10 @@ function MainPage() {
       alert('Já existe um time com esse grito de guerra!');
       return;
     }
+    if (teams.length < 8) {
+      setTeams([...teams, { name, slogan, year, points }]);
+    
+   
     const ulTimesCadastrados = document.getElementById('ulTimesCadastrados');
     const li = document.createElement('li');
     li.innerText = `${name} - ${slogan} - ${year}`;
@@ -42,8 +46,14 @@ function MainPage() {
     // Limpa os inputs após adicionar a lista 
     setName('');
     setSlogan('');
-    setYear('');
+    setYear('')
+
+    // } if (teams.length >8) {
+    //   alert('O número máximo de times é 8!');
+    //   return;
+    // }
   }
+}
 
   const irParaPartidas = () => {
     navigate('/partidas');
@@ -51,7 +61,10 @@ function MainPage() {
 
   
   const verify = name && slogan && year;
-  const quantidadeTimes = teams.length > 3;
+  const quantidadeTimes = teams.length ===8; 
+  const podeAdicionarTimes = teams.length < 8;
+
+
   return (
     <div>
       <header>
@@ -60,6 +73,7 @@ function MainPage() {
         <div className='registrationTitle'>
         <h2>Cadastre os Times</h2>
         </div>
+        
         <div className='infoTeam'>
         <label htmlFor='teamName'>Nome do Time: </label>
         <input
@@ -95,7 +109,7 @@ function MainPage() {
         <div className='buttonMainPage'>
         <button
           type="button"
-          disabled={ !verify }
+          disabled={ !verify || !podeAdicionarTimes}
           onClick={ handleClick }
         >
           Adicionar Time
@@ -111,9 +125,11 @@ function MainPage() {
         </button>
         </div>
         </div>
+        <div className='teams'>
         <h3>Times Cadastrados</h3>
         <ul id='ulTimesCadastrados'>
         </ul>
+        </div>
     </div>
   )
 }

@@ -75,7 +75,9 @@ function Partidas() {
 
   return (
     <div>
+      <div className='championship'>
       <h1>Ballit Championship</h1>
+      </div>
       <div className='titleMatches'>
       <h2>Partidas</h2>
       </div>
@@ -90,74 +92,78 @@ function Partidas() {
         ))}
       </ul>
       </div>
-
+      <div className='startGame'>
       <button
           type="button"
           onClick={ startGame }
         >
           Iniciar Jogo
       </button>
-      {/* <button
-          type="button"
-          disabled={ matches.length !== 1 }
-          onClick={ finalizarJogo }
-        >
-          Finalizar Jogo
-      </button> */}
-
-      <p id='gritoDeGuerraT1'></p>
-      <p id='nomeT1'></p>
-      <button
-          type="button"
-          id='btnPlifT1'
-          onClick={ () => plifBlotAdv(matches[currentMatchIndex - 1].team1, 'plif') }
-        >
-          Plif
-      </button>
-      <button
-          type="button"
-          id='btnBlotT1'
-          onClick={ () => plifBlotAdv(matches[currentMatchIndex - 1].team1, 'blot') }
-        >
-          Blot
-      </button>
-      <button
-          type="button"
-          id='btnAdvrunghT1'
-          onClick={ () => plifBlotAdv(matches[currentMatchIndex - 1].team1, 'advrungh') }
-        >
-          Advrungh
-      </button>
-      <p>VS</p>
-      <p id='gritoDeGuerraT2'></p>
-      <p id='nomeT2'></p>
-      <button
-          type="button"
-          id='btnPlifT2'
-          onClick={ () => plifBlotAdv(matches[currentMatchIndex - 1].team2, 'plif') }
-        >
-          Plif
-      </button>
-      <button
-          type="button"
-          id='btnBlotT2'
-          onClick={ () => plifBlotAdv(matches[currentMatchIndex - 1].team2, 'blot') }
-        >
-          Blot
-      </button>
-      <button
-          type="button"
-          id='btnAdvrunghT2'
-          onClick={ () => plifBlotAdv(matches[currentMatchIndex - 1].team2, 'advrungh') }
-        >
-          Advrungh
-      </button>
-
-    <div className='points'>
-      <p id='nomePontosT1'></p>
-      <p id='nomePontosT2'></p>
       </div>
-    </div>
+  
+            <div className='rivals'>
+              <p id='gritoDeGuerraT1'></p>
+              <p id='nomeT1'></p>
+              <p>VS</p>
+              <p id='gritoDeGuerraT2'></p>
+              <p id='nomeT2'></p>
+            </div>
+          <div className='admin'>
+            <div className='controls'>
+              <button
+                  type="button"
+                  id='btnPlifT1'
+                  onClick={ () => plifBlotAdv(matches[currentMatchIndex - 1].team1, 'plif') }
+                >
+                  Plif
+              </button>
+              <button
+                  type="button"
+                  id='btnBlotT1'
+                  onClick={ () => plifBlotAdv(matches[currentMatchIndex - 1].team1, 'blot') }
+                >
+                  Blot
+              </button>
+              <button
+                  type="button"
+                  id='btnAdvrunghT1'
+                  onClick={ () => plifBlotAdv(matches[currentMatchIndex - 1].team1, 'advrungh') }
+                >
+                  Advrungh
+                  
+              </button>
+            </div>
+            
+              <div className='controls2'>
+                <button
+                    type="button"
+                    id='btnPlifT2'
+                    onClick={ () => plifBlotAdv(matches[currentMatchIndex - 1].team2, 'plif') }
+                  >
+                    Plif
+                </button>
+                <button
+                    type="button"
+                    id='btnBlotT2'
+                    onClick={ () => plifBlotAdv(matches[currentMatchIndex - 1].team2, 'blot') }
+                  >
+                    Blot
+                </button>
+                <button
+                    type="button"
+                    id='btnAdvrunghT2'
+                    onClick={ () => plifBlotAdv(matches[currentMatchIndex - 1].team2, 'advrungh') }
+                  >
+                    Advrungh
+                </button>
+              </div>
+              </div>
+                <div className='points'>
+                  <p id='nomePontosT1'></p>
+                  <p id='nomePontosT2'></p>
+                </div>
+     </div>
+         
   )
 }
 
