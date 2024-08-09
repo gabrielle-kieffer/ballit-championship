@@ -1,24 +1,143 @@
-.App {
-  text-align: center;
+.championship{
+display: flex;
+justify-content: center;
 }
 
-form {
-  margin-bottom: 20px;
+header{
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.registrationTitle{
+  font-size: 18px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.infoTeam{
+  margin-top: 20px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+}
+
+
+body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #cbc4c4; 
+
+}
+
+.App {
+  text-align: center;
+  width: 100%;
+  max-width: 800px; 
+  padding: 20px;
+  border-radius: 8px; 
 }
 
 input {
-  margin: 5px;
+  margin: 15px;
   padding: 10px;
   font-size: 16px;
+  border: none; 
+  background-color:  #ccb1b1; 
+  border-radius: 4px; 
 }
+
+
+input:focus{
+  border: none; 
+}
+
 
 button {
   margin-top: 10px;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 17px;
+  border: none; 
+  border-radius: 6px; 
+  background-color: #952bb2;
+  color: #000000; 
+  cursor: pointer; 
+  transition: background-color 0.5s; 
 }
 
-h2 {
-  margin-top: 20px;
+button:hover {
+  background-color: #b964d1; 
+}
+
+
+
+.buttonMainPage{
+  display: flex;
+  justify-content: center;
+
+}
+
+.buttonInitial{
+  display: flex;
+  justify-content: center;
+  margin-left: 50px;
+}
+
+h3{
+  font-size: 24px;
+}
+
+ul{
+  font-size: 20px;
+}
+
+.titleMatches{
+  display: flex;
+  justify-content: center;
+}
+
+.match{
+  display: flex;
+  justify-content: center;
+}
+
+.startGame{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.rivals{
+  display: flex;
+  justify-content: space-between;
+}
+
+.admin{
+  display: flex;
+}
+
+
+
+.controls2{
+  margin-left: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.points{
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+  margin-top: 12px;
+}
+
+.ranking{
+  display: flex;
+  justify-content: center;
 }
 
